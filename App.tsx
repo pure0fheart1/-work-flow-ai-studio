@@ -185,7 +185,7 @@ const AppContent: React.FC = () => {
                   dragOverIndex === index ? 'bg-neutral-800' : ''
                 }`}
               >
-                {moduleInfo.icon}
+                <span className="text-current">{moduleInfo.icon}</span>
                 {moduleInfo.name}
               </button>
             );

@@ -31,3 +31,24 @@
   pointer-events: none;
   position: absolute;
 }
+
+/* Ensure SVG icons are visible */
+svg {
+  flex-shrink: 0;
+}
+
+/* Navigation icon styling */
+nav svg {
+  color: inherit;
+  stroke: currentColor;
+  fill: none;
+  width: 20px;
+  height: 20px;
+}
+
+/* General icon styling */
+.icon svg, svg.icon {
+  color: inherit;
+  stroke: currentColor;
+  fill: none;
+}
