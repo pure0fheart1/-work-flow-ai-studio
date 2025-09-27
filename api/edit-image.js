@@ -27,6 +27,18 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'base64ImageData, mimeType, and prompt are required' });
     }
 
+    // Check image size (Vercel has 4.5MB limit for serverless functions)
+    const imageSizeInBytes = (base64ImageData.length * 3) / 4;
+    const maxSizeInBytes = 4 * 1024 * 1024; // 4MB limit
+
+    if (imageSizeInBytes > maxSizeInBytes) {
+      return res.status(413).json({
+        error: 'Image too large. Please use an image smaller than 4MB.',
+        size: Math.round(imageSizeInBytes / 1024 / 1024 * 100) / 100 + 'MB',
+        maxSize: '4MB'
+      });
+    }
+
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const imagePart = {

@@ -3,6 +3,7 @@ import { editImage } from '../../services/geminiService.ts';
 import { EditIcon } from '../../components/Icons.tsx';
 import { useAppContext } from '../../contexts/AppContext.tsx';
 import { GeneratedContent } from '../../types.ts';
+import { dataURLToBase64, getMimeType, getImageSize, formatFileSize } from '../../utils/imageUtils.ts';
 
 const PhotoBooth: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -66,8 +67,17 @@ const PhotoBooth: React.FC = () => {
                 context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
                 context.restore(); // Restore to the default state to avoid side effects
             }
-            const dataUrl = canvas.toDataURL('image/jpeg');
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+
+            // Check image size before setting
+            const base64Size = getImageSize(dataURLToBase64(dataUrl));
+            if (base64Size > 4 * 1024 * 1024) {
+                setCameraError(`Captured image is too large (${formatFileSize(base64Size)}). Please try with lower resolution.`);
+                return;
+            }
+
             setCapturedImage(dataUrl);
+            setCameraError(null);
         }
     };
 

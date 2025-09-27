@@ -3,6 +3,7 @@ import { useAppContext } from '../../contexts/AppContext.tsx';
 import { editImage } from '../../services/geminiService.ts';
 import { EditIcon } from '../../components/Icons.tsx';
 import { GeneratedContent } from '../../types.ts';
+import { compressImage, dataURLToBase64, getMimeType, getImageSize, formatFileSize } from '../../utils/imageUtils.ts';
 
 const ImageEditor: React.FC = () => {
     const { imageForEditor, setImageForEditor, addContentToGallery } = useAppContext();
@@ -24,15 +25,26 @@ const ImageEditor: React.FC = () => {
         }
     }, [imageForEditor, setImageForEditor]);
     
-    const handleFileSelect = (file: File) => {
+    const handleFileSelect = async (file: File) => {
         if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setSourceImage(e.target?.result as string);
+            try {
+                // Compress image before setting
+                const compressedDataUrl = await compressImage(file, 1024, 0.8);
+                const base64Size = getImageSize(dataURLToBase64(compressedDataUrl));
+
+                // Check if still too large after compression
+                if (base64Size > 4 * 1024 * 1024) {
+                    setError(`Image is still too large after compression (${formatFileSize(base64Size)}). Please use a smaller image.`);
+                    return;
+                }
+
+                setSourceImage(compressedDataUrl);
                 setEditedImage(null);
                 setIsSaved(false);
-            };
-            reader.readAsDataURL(file);
+                setError(null);
+            } catch (err) {
+                setError('Failed to process image. Please try a different image.');
+            }
         }
     }
 

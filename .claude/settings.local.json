@@ -7,7 +7,16 @@
       "mcp__github__create_repository",
       "Bash(gh auth:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npm install:*)",
+      "Bash(vercel login:*)",
+      "Bash(vercel:*)",
+      "Bash(curl -X POST \"https://workflow-4jbbtsynu-jamie-lees-projects-f8b674ea.vercel.app/api/enhance-prompt\" -H \"Content-Type: application/json\" -d \"{\"\"prompt\"\": \"\"test\"\"}\")",
+      "Bash(curl -I \"https://workflow-4jbbtsynu-jamie-lees-projects-f8b674ea.vercel.app\")"
     ],
     "deny": [],
     "ask": []
