@@ -175,7 +175,7 @@ const AppContent: React.FC = () => {
                 onDragEnd={handleDragEnd}
                 onDragLeave={() => setDragOverIndex(null)}
                 onClick={() => setActiveModule(key)}
-                className={`h-full flex items-center text-md font-medium transition-all duration-200 border-b-2 px-2 rounded-t-sm cursor-grab ${
+                className={`h-full flex items-center gap-2 text-md font-medium transition-all duration-200 border-b-2 px-2 rounded-t-sm cursor-grab ${
                   isActive
                     ? 'text-white border-purple-500'
                     : 'text-neutral-400 border-transparent hover:text-white'
@@ -185,6 +185,7 @@ const AppContent: React.FC = () => {
                   dragOverIndex === index ? 'bg-neutral-800' : ''
                 }`}
               >
+                {moduleInfo.icon}
                 {moduleInfo.name}
               </button>
             );
