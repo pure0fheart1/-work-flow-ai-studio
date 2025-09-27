@@ -35,6 +35,8 @@
 /* Ensure SVG icons are visible */
 svg {
   flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Navigation icon styling */
@@ -44,11 +46,30 @@ nav svg {
   fill: none;
   width: 20px;
   height: 20px;
+  stroke-width: 2;
 }
 
 /* General icon styling */
 .icon svg, svg.icon {
   color: inherit;
   stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* Force icon visibility */
+svg[width="24"], svg[height="24"] {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Upload and generate section icons */
+.upload-icon svg, .generate-icon svg {
+  color: #a1a1aa !important;
+  stroke: #a1a1aa !important;
+  stroke-width: 2;
   fill: none;
 }

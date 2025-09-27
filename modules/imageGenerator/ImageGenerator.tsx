@@ -176,7 +176,7 @@ const ImageGenerator: React.FC = () => {
             }} 
             className="bg-neutral-800/50 hover:bg-neutral-800 border-2 border-dashed border-neutral-700 hover:border-neutral-600 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer transition-all duration-300"
           >
-            <UploadIcon className="w-12 h-12 text-neutral-500 mb-4" />
+            <div className="upload-icon"><UploadIcon className="w-12 h-12 text-neutral-500 mb-4" /></div>
             <h3 className="text-xl font-semibold mb-1 text-white">Upload Image</h3>
             <p className="text-neutral-400">Click to browse or drag & drop</p>
           </div>
@@ -192,7 +192,7 @@ const ImageGenerator: React.FC = () => {
                   className="w-full bg-neutral-700/50 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border border-neutral-700"
               />
               <button onClick={handleAddToQueue} className="absolute right-1 top-1 bottom-1 px-3 bg-neutral-600 hover:bg-neutral-500 rounded-md">
-                <SparklesIcon className="w-5 h-5 text-purple-400" />
+                <div className="generate-icon"><SparklesIcon className="w-5 h-5 text-purple-400" /></div>
               </button>
             </div>
             <p className="text-xs text-neutral-500">Enter a prompt and hit the sparkle to start.</p>
@@ -212,12 +212,12 @@ const ImageGenerator: React.FC = () => {
             <label htmlFor="prompt" className="block text-sm font-medium text-neutral-300">
               Prompt
             </label>
-            <button 
-              onClick={() => setIsEnhancerOpen(true)} 
+            <button
+              onClick={() => setIsEnhancerOpen(true)}
               className="flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 transition-colors"
               title="Enhance prompt with AI"
             >
-              <SparklesIcon /> Enhance
+              <div className="generate-icon"><SparklesIcon /></div> Enhance
             </button>
           </div>
           <textarea
