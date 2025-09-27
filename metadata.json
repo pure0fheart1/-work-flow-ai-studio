@@ -1,0 +1,8 @@
+{
+  "name": "Work_Flow",
+  "description": "A comprehensive creative workflow application integrating a digital whiteboard, AI task management, image and video generation, intelligent prompt creation, and a centralized content gallery.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

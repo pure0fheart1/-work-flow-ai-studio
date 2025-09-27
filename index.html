@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF--8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work_Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Indie+Flower&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://unpkg.com/@google/genai@0.15.0/dist/index.mjs",
+    "zod": "https://esm.sh/zod@3.23.8"
+  }
+}
+</script>
+<style>
+  .font-handwriting { font-family: 'Caveat', cursive; }
+  .font-cursive { font-family: 'Dancing Script', cursive; }
+  .font-indie { font-family: 'Indie Flower', cursive; }
+
+  /* Added for UI/UX enhancements */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  /* Keyframes for individual message animation in chat */
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-in-up {
+    animation: slideInUp 0.5s ease-out forwards;
+  }
+
+  /* Placeholder for contenteditable divs */
+  [contenteditable="true"]:empty::before {
+    content: attr(data-placeholder);
+    color: #a1a1aa; /* neutral-400 */
+    pointer-events: none;
+    position: absolute;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-black text-neutral-300 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
